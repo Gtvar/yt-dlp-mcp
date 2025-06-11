@@ -37,7 +37,7 @@
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target node",
     "build:watch": "pnpm build --watch",
-    "postbuild": "shx chmod +x dist/*.js",
+    "postbuild": "echo '#!/usr/bin/env node' | cat - dist/index.js > dist/index.tmp.js && mv dist/index.tmp.js dist/index.js && shx chmod +x dist/*.js",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "build:http": "bun build src/server/http-server.ts --outdir build --target node",
     "dev": "bun --watch src/index.ts",
