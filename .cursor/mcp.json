@@ -1,0 +1,15 @@
+{
+    "mcpServers": {
+      "yt-dlp-mcp": {
+        "command": "npx",
+        "args": [
+          "tsx", 
+          "/Users/ykol/mcp/data/servers/yt-dlp-mcp/src/index.ts"
+        ],
+        "env": {
+          "NODE_ENV": "development",
+          "YTDL_OUTPUT_DIR": "/Users/ykol/mcp/data/yt-dlp"
+        }
+      }
+    }
+  }
