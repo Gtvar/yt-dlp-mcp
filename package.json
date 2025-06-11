@@ -1,13 +1,44 @@
 {
-  "name": "mcp-server",
-  "module": "src/index.ts",
-  "type": "module",
+  "name": "@gtvar/yt-dlp-mcp",
   "version": "1.0.0",
-  "description": "Model Context Protocol (MCP) Server",
-  "private": true,
+  "private": false,
+  "description": "Model Context Protocol (MCP) Server for yt-dlp",
+  "keywords": [
+    "mcp",
+    "yt-dlp"
+  ],
+  "homepage": "https://github.com/Gtvar/yt-dlp-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/Gtvar/yt-dlp-mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gtvar/yt-dlp-mcp.git"
+  },
+  "license": "MIT",
+  "author": "gtvar",
+  "type": "module",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "bin": {
+    "yt-dlp-mcp": "dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "start": "bun run src/index.ts",
-    "build": "bun build src/index.ts --outdir build --target node",
+    "build": "bun build src/index.ts --outdir dist --target node",
+    "build:watch": "pnpm build --watch",
+    "postbuild": "shx chmod +x dist/*.js",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "build:http": "bun build src/server/http-server.ts --outdir build --target node",
     "dev": "bun --watch src/index.ts",
     "start:http": "bun run src/server/http-server.ts",
@@ -16,6 +47,12 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:ci": "jest --ci --coverage --watchAll=false"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "fastmcp": "^1.27",
+    "xsschema": "^0.3.0-beta.3",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -30,10 +67,5 @@
     "@valibot/to-json-schema": "^1.0.0",
     "effect": "^3.14.4"
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "fastmcp": "^1.27",
-    "xsschema": "^0.3.0-beta.3",
-    "zod": "^3.24.2"
-  }
+  "module": "src/index.ts"
 }

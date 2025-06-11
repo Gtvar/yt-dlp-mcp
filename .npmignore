@@ -1,0 +1,12 @@
+node_modules/
+.env
+*.log
+.DS_Store
+src/
+tests/
+package-lock.json
+tsconfig.json
+jest.config.ts
+.gitignore
+.npmignore
+.cursor
